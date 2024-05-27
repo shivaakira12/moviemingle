@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{homebase::Layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>MovieMingle - Home</title>
+</head>
+
+<body>
+
+	<section class="content-section">
+		<h1>Quality of Movies and Content Matters</h1>
+		<p>At Movie Mingle, you can find all the different movies here. <br>Whether you're looking for the latest
+			blockbusters, timeless classics, or hidden gems,<br> we have something for every movie enthusiast.</p>
+	</section>
+	<section class="movie-container">
+		<div class="movie-card" th:each="m:${movies}">
+			<a th:href="@{'/home/movie/'+${m.movieId}}">
+				<img th:src="@{'/images/movie_images/'+${m.image}}" alt="Movie 1"></a>
+			<div class="movie-details">
+				<span class="movie-name">[[${m.movieTitle}]]</span>
+				<span class="release-year">[[${m.movieReleaseYear}]]</span>
+			</div>
+		</div>
+	</section>
+
+</body>
+
+</html>

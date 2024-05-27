@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::Layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Login</title>
+</head>
+
+<body>
+	<section>
+		<!--==================== MAIN ====================-->
+		<main>
+			<div class="container1">
+				<div class="card" style="width: auto;">
+					<h2>Total Movies</h2>
+					<div class="count" th:text="${totalMovies}">
+
+					</div>
+				</div>
+
+				<div class="card" style="width: auto;">
+					<h2>Total Users</h2>
+					<div class="count">0</div>
+				</div>
+			</div>
+			<div class="table-container">
+				<table>
+					<th:block th:if="${session.deleteMsg}">
+						<p style="color: green;">[[${session.deleteMsg}]]</p>
+						<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+					</th:block>
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Year</th>
+							<th>Genre</th>
+							<th>Cast</th>
+							<th>Director</th>
+							<th>Synopsis</th>
+							<th>Image</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="m:${listofmovies}">
+							<td>[[${m.movieId}]]</td>
+							<td>[[${m.movieTitle}]]</td>
+							<td>[[${m.movieReleaseYear}]]</td>
+							<td>[[${m.movieGenre}]]</td>
+							<td>[[${m.movieCast}]]</td>
+							<td>[[${m.movieDirector}]]</td>
+							<td>[[${m.movieSynopsis}]]</td>
+							<td><img th:src="@{'/images/movie_images/'+${m.image}}" width="65px"></td>
+
+							<td><a th:href="@{'/admin/editMovie/'+${m.movieId}}"
+									style="color: white;background-color: darkgreen;padding: 4px;border-radius: 0.2rem;cursor: pointer;">E</a>
+								<a th:href="@{'/admin/deleteMovie/'+${m.movieId}}"
+									style="color: white;background-color:red;padding: 4px;border-radius: 0.2rem; cursor: pointer;">D</a>
+							</td>
+						</tr>
+
+						<!-- Add more rows as needed -->
+					</tbody>
+				</table>
+
+
+				<!-- Code for Pagination -->
+				<div>
+					<div class="pagination">
+						<!--
+						<span>Total Pages = [[${totalMovies}]] </span>
+						-->
+						<div class="col-sm-1" style="margin: 10px;">
+							<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+								<a th:if="${currentPage != i}" th:href="@{'/admin/page/' + ${i}}" style="background-color: black;padding: 10px;border-radius: 0.2rem;color: white;">[[${i}]]</a>
+								<span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+							</span>
+						</div>
+						<div class="col-sm-1">
+							<a th:if="${currentPage < totalPages}" th:href="@{'/admin/page/' + ${currentPage + 1}}" style="color: #000;">Next</a>
+							<span th:unless="${currentPage < totalPages}">Next</span> &nbsp; &nbsp;
+						</div>
+
+						<div class="col-sm-1">
+							<a th:if="${currentPage < totalPages}" th:href="@{'/admin/page/' + ${totalPages}}" style="color: #000;">Last</a>
+							<span th:unless="${currentPage < totalPages}">Last</span>
+						</div>
+					</div>
+				</div>
+
+
+		</main>
+
+	</section>
+</body>

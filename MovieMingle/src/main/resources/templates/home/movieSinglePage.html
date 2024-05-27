@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{homebase::Layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Movie Single</title>
+</head>
+
+<body>
+	<section>
+		<div class="container">
+			<div class="content">
+				<img th:src="@{'/images/movie_images/'+${movie.image}}" alt="Movie Image" class="movie-image">
+				<div class="movie-info">
+					<h2 class="title">[[${movie.movieTitle}]]</h2>
+					<p class="year">[[${movie.movieReleaseYear}]]</p>
+					<br><br><br><br>
+					<p class="genre">Genre : [[${movie.movieGenre}]]</p>
+					<p class="cast">Cast : [[${movie.movieCast}]]</p>
+					<p class="director">Director : [[${movie.movieDirector}]]</p><br><br>
+					<div class="buttons">
+						<button class="trailer-button">Watch Trailer</button>
+						<button class="download-button">Download</button>
+					</div>
+				</div>
+			</div>
+			<div class="video-container">
+				<video controls class="video">
+					<source src="https://www.youtube.com/watch?v=Zp6fW1paSIw" type="video/mp4">
+					Your browser does not support the video tag.
+				</video>
+			</div>
+			<div class="synopsis">
+				<h3>Synopsis : </h3>
+				<p>[[${movie.movieSynopsis}]]</p>
+			</div>
+		</div>
+	</section>
+</body>

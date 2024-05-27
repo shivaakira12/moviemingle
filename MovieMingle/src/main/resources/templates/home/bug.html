@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{homebase::Layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>MovieMingle - Home</title>
+</head>
+ 
+<body>
+
+	<section>
+		<div class="bugcontainer">
+        <h1>Bug Report Form</h1>
+        <br><br>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="bug-description">Bug Description:</label>
+                <textarea id="bug-description" name="bug-description" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="bug-url">Page URL:</label>
+                <input type="text" id="bug-url" name="bug-url" required>
+            </div>
+            <div class="form-group">
+                <label for="bug-screenshot">Screenshot:</label>
+                <input type="file" id="bug-screenshot" name="bug-screenshot" accept="image/*">
+            </div>
+            <button class="bugbutton" type="submit">Submit</button>
+        </form>
+    </div>
+	</section>
+</body>
+
+</html>

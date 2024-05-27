@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::Layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Popcorn Panel - Edit Movie</title>
+</head>
+
+<body>
+	<section>
+		<!--==================== MAIN ====================-->
+		<div class="wrapper">
+			<div class="form-container">
+				<h2>Edit Movie Details</h2>
+				<th:block th:if="${session.successMsg}">
+					<p style="color: green;">[[${session.successMsg}]]</p>
+					<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+				</th:block>
+
+				<th:block th:if="${session.errorMsg}">
+					<p style="color: red;">[[${session.errorMsg}]]</p>
+					<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+				</th:block>
+				<form action="/admin/updateMovie" method="post" enctype="multipart/form-data">
+					<input type="hidden" th:value="${movieDetails.movieId}" name="movieId">
+					<div class="form-group">
+						<label for="movie-name">Movie Name</label>
+						<input type="text" id="movie-name" name="${movieTitle}" th:value="${movieDetails.movieTitle}"
+							required>
+					</div>
+					<div class="form-group">
+						<label for="release-year">Movie Release Year</label>
+						<input type="number" id="release-year" name="movieReleaseYear"
+							th:value="${movieDetails.movieReleaseYear}" required>
+					</div>
+					<div class="form-group">
+						<label for="genre">Movie Genre</label>
+						<input type="text" id="genre" name="movieGenre" th:value="${movieDetails.movieGenre}" required>
+					</div>
+					<div class="form-group">
+						<label for="director">Movie Director</label>
+						<input type="text" id="director" name="movieDirector" th:value="${movieDetails.movieDirector}"
+							required>
+					</div>
+					<div class="form-group">
+						<label for="cast">Movie Cast</label>
+						<input type="text" id="cast" name="movieCast" th:value="${movieDetails.movieCast}" required>
+					</div>
+					<div class="form-group">
+						<label for="cast">Movie Cast</label>
+						<input type="text" id="cast" name="movieSynopsis" th:value="${movieDetails.movieSynopsis}" required>
+					</div>
+					
+					<div class="form-group">
+						<label for="image">Movie Image</label>
+						<input type="file" id="image" name="file" accept="image/*" required>
+					</div>
+					<div class="form-group">
+						<img th:src="@{'/images/movie_images/'+${movieDetails.image}}" width="100px" />
+					</div>
+					<button class="addButton" type="submit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</section>
+</body>

@@ -1,0 +1,493 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+	font-family: "Montserrat", sans-serif;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	outline: none;
+}
+
+body {}
+
+.navbar {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: white;
+	padding: 10px;
+	color: green;
+}
+
+.logo a {
+	color: green;
+	font-weight: 800;
+	height: 50px;
+	font-size: 20px;
+}
+
+.search-bar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-grow: 1;
+	margin: 0 20px;
+	border: 1px solid lightgray;
+}
+
+.search-bar input {
+	width: 100%;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+}
+
+.contact-info {
+	display: flex;
+	align-items: center;
+}
+
+.phone-number {
+	margin-right: 20px;
+}
+
+.telegram-button {
+	background-color: green;
+	color: white;
+	padding: 10px 15px;
+	border: none;
+	border-radius: 5px;
+	text-decoration: none;
+	transition: background-color 0.3s;
+}
+
+.telegram-button:hover {
+	background-color: #000;
+}
+
+.sub-header {
+
+	background-color: green;
+	padding: 10px 0;
+	position: relative;
+}
+
+.menu-icon {
+	display: none;
+	font-size: 30px;
+	cursor: pointer;
+	color: white;
+	padding: 0 20px;
+}
+
+.nav-links {
+	display: flex;
+	justify-content: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav-item {
+	margin: 0 15px;
+}
+
+.nav-item a {
+	color: white;
+	text-decoration: none;
+	padding: 10px 15px;
+	display: block;
+	transition: background-color 0.3s;
+}
+
+.nav-item.active a {
+
+	background-color: black;
+	color: white;
+	border-radius: 5px;
+}
+
+.nav-item a:hover {
+	background-color: #000;
+	border-radius: 5px;
+}
+
+/*
+
+Styling for home page
+*/
+
+.content-section {
+	text-align: center;
+	padding: 20px;
+}
+
+.content-section h1 {
+	margin: 0;
+	padding: 20px;
+	color: #333;
+}
+
+.content-section p {
+	margin: 0px 0 0;
+	padding: 0 10px;
+	color: #666;
+}
+
+.movie-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 20px;
+	background-color: white;
+}
+
+.movie-card {
+	background-color: white;
+	margin: 10px;
+	padding: 10px;
+	width: 200px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.movie-card img {
+	width: 100%;
+	height: auto;
+	border-radius: 8px;
+}
+
+.movie-details {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	margin-top: 10px;
+	padding: 0 10px;
+}
+
+.movie-name {
+	font-weight: bold;
+	color: #333;
+}
+
+.release-year {
+	color: #999;
+}
+
+/*
+
+Styling for footer page
+*/
+
+.container {
+	max-width: 1200px;
+	margin: 20px auto;
+	padding: 20px;
+}
+
+.content {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.movie-image {
+	box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+	border-radius: 0.2rem;
+	width: 230px;
+	height: auto;
+	margin-right: 20px;
+}
+
+.title {
+	margin: 0;
+	font-size: 50px;
+}
+
+.year,
+.genre,
+.cast,
+.director {
+	margin: 5px 0;
+}
+
+.buttons {
+	margin-top: 10px;
+	display: flex;
+	width: auto	;
+}
+
+.trailer-button {
+	background-color: black;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.download-button {
+	background-color: green;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.video-container {
+
+	margin-top: 20px;
+}
+
+.video {
+	box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+	border: 2px solid green;
+	width: 100%;
+	background-color: white;
+}
+
+.synopsis {
+	margin-top: 20px;
+}
+
+.synopsis h3 {
+	color: green;
+	margin: 0;
+}
+
+.synopsis p {
+	margin-top: 5px;
+}
+
+.footer {
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+	background-color: white;
+	color: #000;
+	text-align: center;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+
+
+/*
+Bug page
+*/
+.bugcontainer {
+	max-width: 600px;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+}
+
+h1 {
+	text-align: center;
+}
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+label {
+	font-weight: bold;
+}
+
+textarea,
+input[type="text"],
+input[type="file"],
+button {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+textarea {
+	resize: vertical;
+}
+
+.bugbutton {
+	background-color: green;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.bugbutton:hover {
+	background-color: black;
+}
+
+
+
+.aboutcontainer {
+	max-width: 800px;
+	margin: 20px auto;
+	padding: 0 20px;
+}
+
+.about-website,
+.about-team {
+	margin-bottom: 40px;
+}
+
+.about-website h2,
+.about-team h2 {
+	margin-top: 0;
+}
+
+.team-member {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.team-member img {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.team-member h3 {
+	margin: 10px 0 5px;
+}
+
+.team-member p {
+	margin: 0;
+	color: #666;
+}
+
+.contactcontainer {
+	max-width: 600px;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+}
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+label {
+	display: block;
+	text-align: justify;
+	margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea,
+button {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+textarea {
+	resize: vertical;
+}
+
+.contactbutton {
+	background-color: green;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.contactbutton:hover {
+	background-color: #000;
+}
+
+@media (max-width: 768px) {
+	.container {
+		margin: 20px;
+	}
+
+	.content {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.movie-image {
+		margin-right: 0;
+		margin-bottom: 20px;
+	}
+
+	.navbar {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.search-bar {
+		width: 100%;
+		margin: 10px 0;
+	}
+
+	.contact-info {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.phone-number {
+		margin-bottom: 10px;
+	}
+
+	.sub-header {
+		padding: 0;
+	}
+
+	.menu-icon {
+		display: block;
+	}
+
+	.nav-links {
+		display: none;
+		flex-direction: column;
+		width: 100%;
+	}
+
+	.nav-links.show {
+		display: flex;
+	}
+
+	.nav-item {
+		margin: 0;
+		border-top: 1px solid white;
+		width: 100%;
+		text-align: center;
+	}
+
+	.nav-item a {
+		padding: 15px 0;
+	}
+
+	.content-section p {
+		padding: 0 10px;
+	}
+
+	.movie-container {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.movie-card {
+		width: 100%;
+		max-width: 300px;
+	}
+}

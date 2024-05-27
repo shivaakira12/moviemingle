@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::Layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Popcorn Panel - Add Movie</title>
+</head>
+
+<body>
+	<section>
+		<!--==================== MAIN ====================-->
+		<div class="wrapper">
+			<div class="form-container">
+				<h2>Add Movie Details</h2>
+				<th:block th:if="${session.successMsg}">
+					<p style="color: green;">[[${session.successMsg}]]</p>
+					<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+				</th:block>
+
+				<th:block th:if="${session.errorMsg}">
+					<p style="color: red;">[[${session.errorMsg}]]</p>
+					<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+				</th:block>
+				<form action="/admin/saveMovie" method="post" enctype="multipart/form-data">
+					<div class="form-group">
+						<label for="movie-name">Movie Name</label>
+						<input type="text" id="movie-name" name="movieTitle" required>
+					</div>
+					<div class="form-group">
+						<label for="release-year">Movie Release Year</label>
+						<input type="number" id="release-year" name="movieReleaseYear" required>
+					</div>
+					<div class="form-group">
+						<label for="genre">Movie Genre</label>
+						<input type="text" id="genre" name="movieGenre" required>
+					</div>
+					<div class="form-group">
+						<label for="director">Movie Director</label>
+						<input type="text" id="director" name="movieDirector" required>
+					</div>
+					<div class="form-group">
+						<label for="cast">Movie Cast</label>
+						<input type="text" id="cast" name="movieCast" required>
+					</div>
+					<div class="form-group">
+						<label for="synopsis"  >Movie Synopsis</label>
+						<textarea id="synopsis" rows="4" name="movieSynopsis" required></textarea>
+					</div>
+					<div class="form-group">
+						<label for="image">Movie Image</label>
+						<input type="file" id="image" name="file" accept="image/*" required>
+					</div>
+					<button class="addButton" type="submit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</section>
+</body>

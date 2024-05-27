@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th"http://www.thymeleaf.org" th:fragment="Layout(content)">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>HomePage</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" />
+	<link rel="stylesheet" th:href="@{/css/home.css}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+		integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+	<nav class="navbar">
+		<div class="logo">
+			<a href="/home/">Movie Mingle</a>
+		</div>
+		<div class="search-bar">
+			<input type="text" placeholder="Search...">
+		</div>
+		<div class="contact-info">
+			<span class="phone-number">+91 9182361656</span>
+			<a href="https://telegram.me/your_telegram_handle" class="telegram-button">Telegram</a>
+		</div>
+	</nav>
+	<header class="sub-header">
+        <div class="menu-icon" onclick="toggleMenu()">
+            &#9776;
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item active"><a href="/home/">Home</a></li>
+            <li class="nav-item"><a href="/home/bug">BugReport</a></li>
+            <li class="nav-item"><a href="/home/about">About</a></li>
+            <li class="nav-item"><a href="/home/contact">Contact Us</a></li>
+        </ul>
+    </header>
+	<script src="script.js"></script>
+	<div th:replace="${content}"></div>
+	<!--Footer Code Starts Here-->
+	 <footer class="footer">
+        <p>&copy; 2024 <span style="color: darkgreen;font-weight: 500;">Movie Mingle.</span> All rights reserved.</p>
+       <!-- <p>About Movie Mingle: Your ultimate destination for discovering the best movies. Join us for reviews, discussions, and more.</p>-->
+    </footer>
+	<!--Footer Code Ends Here-->
+
+	<script th:src="@{/js/home.js}"></script>
+</body>
+
+</html>
