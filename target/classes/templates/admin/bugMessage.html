@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::Layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>MM - Bug Reports</title>
+</head>
+
+<body>
+	<section>
+		<div class="table-container"><br><br><br><br><br><br><br>
+			<table>
+				<th:block th:if="${session.successMsg}">
+					<p style="color: green;">[[${session.successMsg}]]</p>
+					<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+				</th:block>
+
+				<th:block th:if="${session.errorMsg}">
+					<p style="color: red;">[[${session.errorMsg}]]</p>
+					<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+				</th:block>
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Bug Description </th>
+						<th>Page URL</th>
+						<th>Screenshot</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="m:${listofbugs}">
+						<td>[[${m.id}]]</td>
+						<td>[[${m.bugDescription}]]</td>
+						<td>[[${m.bugPageURL}]]</td>
+						<td><img th:src="@{'/images/movie_images/'+${m.image}}" width="65px"></td>
+
+						<td>
+							<a th:href="@{'/admin/deleteBug/'+${m.id}}"
+								style="color: white;background-color:red;padding: 4px;border-radius: 0.2rem; cursor: pointer;">D</a>
+						</td>
+					</tr>
+					<!-- Add more rows as needed -->
+				</tbody>
+			</table>
+			<!-- Code for Pagination -->
+			<div>
+				<div class="pagination">
+					<!--
+						<span>Total Pages = [[${totalMovies}]] </span>
+						-->
+					<div class="col-sm-1" style="margin: 10px;">
+						<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+							<a th:if="${currentPage != i}" th:href="@{'/admin/bugpage/' + ${i}}"
+								style="background-color: black;padding: 10px;border-radius: 0.2rem;color: white;">[[${i}]]</a>
+							<span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+						</span>
+					</div>
+					<div class="col-sm-1">
+						<a th:if="${currentPage < totalPages}" th:href="@{'/admin/bugpage/' + ${currentPage + 1}}"
+							style="color: #000;">Next</a>
+						<span th:unless="${currentPage < totalPages}">Next</span> &nbsp; &nbsp;
+					</div>
+
+					<div class="col-sm-1">
+						<a th:if="${currentPage < totalPages}" th:href="@{'/admin/bugpage/' + ${totalPages}}"
+							style="color: #000;">Last</a>
+						<span th:unless="${currentPage < totalPages}">Last</span>
+					</div>
+				</div>
+			</div>
+	</section>
+</body>

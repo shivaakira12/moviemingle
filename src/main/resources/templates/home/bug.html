@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{homebase::Layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>MovieMingle - Home</title>
+</head>
+
+<body>
+
+	<section>
+		<div class="bugcontainer">
+			<h1>Bug Report Form</h1>
+			<br><br>
+			<form action="/home/savebugs" method="post" enctype="multipart/form-data">
+				<th:block th:if="${session.successMsg}">
+					<div id="notification" class="notification" th:text="${session.successMsg}"></div>
+					<script>
+						document.addEventListener('DOMContentLoaded', function () {
+							var notification = document.getElementById('notification');
+							if (notification) {
+								// Show the notification
+								notification.classList.add('show');
+								// Hide the notification after 5 seconds
+								setTimeout(function () {
+									notification.classList.remove('show');
+								}, 5000);
+							}
+						});
+					</script>
+					<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+				</th:block>
+
+				<th:block th:if="${session.errorMsg}">
+					<p style="color: red;">[[${session.errorMsg}]]</p>
+					<div id="notification" class="notification" th:text="${session.errorMsg}"></div>
+					<script>
+						document.addEventListener('DOMContentLoaded', function () {
+							var notification = document.getElementById('notification');
+							if (notification) {
+								// Show the notification
+								notification.classList.add('show');
+								// Hide the notification after 5 seconds
+								setTimeout(function () {
+									notification.classList.remove('show');
+								}, 5000);
+							}
+						});
+					</script>
+
+					<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+				</th:block>
+				<div class="form-group">
+					<label for="bug-description">Bug Description:</label>
+					<textarea id="bug-description" name="bugDescription" rows="5" required></textarea>
+				</div>
+				<div class="form-group">
+					<label for="bug-url">Page URL:</label>
+					<input type="text" id="bug-url" name="bugPageURL" required>
+				</div>
+				<div class="form-group">
+					<label for="bug-screenshot">Screenshot:</label>
+					<input type="file" id="bug-screenshot" name="img" accept="image/*">
+				</div>
+				<button class="bugbutton" type="submit">Submit</button>
+			</form>
+		</div>
+	</section>
+</body>
+
+</html>

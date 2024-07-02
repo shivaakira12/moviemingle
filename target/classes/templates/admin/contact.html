@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::Layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>MM - Bug Reports</title>
+</head>
+
+<body>
+	<section>
+		<div class="container">
+			<div class="card-container">
+				<th:block th:if="${session.deleteMsg}">
+					<p style="color: green;">[[${session.deleteMsg}]]</p>
+					<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+				</th:block>
+
+				<th:block th:if="${session.errorMsg}">
+					<p style="color: red;">[[${session.errorMsg}]]</p>
+					<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+				</th:block>
+				<div th:each="contact : ${listofbugs}" class="user-card">
+					<h3>Name</h3>
+					<p id="name" th:text="${contact.contactName}"></p>
+					<h3>Email</h3>
+					<p id="email" th:text="${contact.contactEmail}"></p>
+					<h3>Subject</h3>
+					<p id="subject" th:text="${contact.contactSubject}"></p>
+					<h3>Message</h3>
+					<p id="message" th:text="${contact.contactMessage}"></p>
+					<div class="button-container">
+						<a th:href="@{'/admin/deleteContact/'+${contact.contactId}}"
+							style="color: white;background-color:red;padding: 4px;border-radius: 0.2rem; cursor: pointer;">D</a>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<div class="pagination">
+					<div class="col-sm-1" style="margin: 10px;">
+						<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+							<a th:if="${currentPage != i}" th:href="@{'/admin/contactform/' + ${i}}"
+								style="background-color: black;padding: 10px;border-radius: 0.2rem;color: white;">[[${i}]]</a>
+							<span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+						</span>
+					</div>
+					<div class="col-sm-1">
+						<a th:if="${currentPage < totalPages}" th:href="@{'/admin/contactform/' + ${currentPage + 1}}"
+							style="color: #000;">Next</a>
+						<span th:unless="${currentPage < totalPages}">Next</span> &nbsp; &nbsp;
+					</div>
+					<div class="col-sm-1">
+						<a th:if="${currentPage < totalPages}" th:href="@{'/admin/contactform/' + ${totalPages}}"
+							style="color: #000;">Last</a>
+						<span th:unless="${currentPage < totalPages}">Last</span>
+					</div>
+				</div>
+			</div>
+	</section>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{homebase::Layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>MovieMingle - Home</title>
+</head>
+
+<body>
+
+	<section class="content-section">
+		<h1>Quality of Movies and Content Matters</h1>
+		<p>At Movie Mingle, you can find all the different movies here. <br>Whether you're looking for the latest
+			blockbusters, timeless classics, or hidden gems,<br> we have something for every movie enthusiast.</p>
+	</section>
+	<section class="movie-container" id="movieContainer">
+		<div class="movie-card" th:each="m:${movies}">
+			<a th:href="@{'/home/movie/'+${m.movieId}}">
+				<img th:src="@{'/images/movie_images/'+${m.image}}" alt="Movie 1"></a>
+			<div class="movie-details">
+				<span class="movie-name">[[${m.movieTitle}]]</span>
+				<span class="release-year">[[${m.movieReleaseYear}]]</span>
+			</div>
+		</div>
+		<!-- Scroll to Top Button -->
+		<button id="scrollToTopBtn" title="Go to top"><i class="fa-solid fa-angle-up"></i></button>
+		<script>
+			// When the user scrolls down 100px from the top of the document, show the button
+			window.onscroll = function () {
+				scrollFunction();
+			};
+
+			function scrollFunction() {
+				var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+				if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+					scrollToTopBtn.style.display = "block";
+				} else {
+					scrollToTopBtn.style.display = "none";
+				}
+			}
+
+			// When the user clicks on the button, scroll to the top of the document
+			document.getElementById('scrollToTopBtn').addEventListener('click', function () {
+				window.scrollTo({top: 0, behavior: 'smooth'});
+			});
+		</script>
+	</section>
+
+</body>
+
+</html>

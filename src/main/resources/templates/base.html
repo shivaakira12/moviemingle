@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th"http://www.thymeleaf.org" th:fragment="Layout(content)">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>MM - Admin Home</title>
+	 <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"
+    />
+
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+		integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+	 <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="/admin/" class="nav__logo" style="background-color:#006B38ff;color: white;border-radius: 0.2rem;padding: 5px;">M&nbsp;<i class="fa-solid fa-film"></i>&nbsp;M</a>
+
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="/admin/" class="nav__link">
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="/admin/addMovie" class="nav__link">
+                <span>Add Movie</span>
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="/admin/bugReport" class="nav__link">
+                <span>Bug Messages</span>
+              </a>
+            </li>
+            
+            <li class="nav__item">
+              <a href="/admin/contactMessage" class="nav__link">
+                <span>Contact Messages</span>
+              </a>
+            </li>
+            
+            
+          </ul>
+
+          <!-- Close button -->
+          <div class="nav__close" id="nav-close">
+            <i class="ri-close-large-line"></i>
+          </div>
+          </div>
+        </div>
+
+        <!-- Toggle button -->
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="ri-menu-line"></i>
+        </div>
+      </nav>
+    </header>
+
+	<div th:replace="${content}"></div>
+	<!--Footer Code Starts Here-->
+	 <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2>Movie Mingle</h2>
+            </div>
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Support</a>
+                <a href="#">Legal</a>
+            </div>
+            <div class="footer-copy">
+                &copy; 2024 Popcorn Panel. All rights reserved.
+            </div>
+        </div>
+    </footer>
+	<!--Footer Code Ends Here-->
+
+	<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>
